@@ -3,9 +3,33 @@
     <ion-title>
     Notes
     </ion-title>
-  </ion-navbar>
+    
+      <ion-buttons end>
+        <button ion-button icon-only (click)="add()">
+            <ion-icon name="add-circle" style="color:green">
+            </ion-icon>
+            </button>
+          </ion-buttons>
+          
+</ion-navbar>
 </ion-header>
 
 <ion-content padding>
+    <ion-list>
+        <ion-item *ngFor="let item of items" (click)="viewItem(item)">
+          {{item.title}}
+        </ion-item>
+      </ion-list>
+  
+  
+    <ion-searchbar>
+    [(ngModel)]="myInput"
+    [showCancelButton]="shouldShowCancel"
+    (ionInput)="onInput($event)"
+    (ionCancel)="onCancel($event)">
+    </ion-searchbar>      
+    
+   
   
   </ion-content>
+ 
